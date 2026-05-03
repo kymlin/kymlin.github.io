@@ -1,0 +1,339 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Kymlin's Blog</title><meta name="author" content="Kymlin,kymlin00@gmail.com"><meta name="copyright" content="Kymlin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Kymlin's Blog",
+  "alternateName": [
+    "kymlin.github.io"
+  ],
+  "url": "http://kymlin.github.io/"
+}</script><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="http://kymlin.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Kymlin\'s Blog',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://movie.douban.com/top250"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://s3.bmp.ovh/imgs/2021/11/4f30b1fe9c11045f.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Kymlin's Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://movie.douban.com/top250"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">Kymlin's Blog</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/kymlin" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:kymlin00@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="post_cover left"><a href="/2026/05/03/python/python%20print/" title="print输出到文件"><img class="post-bg" src="https://s3.bmp.ovh/imgs/2021/12/c26b41ae47cabcc2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="print输出到文件"></a></div><div class="recent-post-info"><a class="article-title" href="/2026/05/03/python/python%20print/" title="print输出到文件">print输出到文件</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-05-03T15:42:12.030Z" title="发表于 2026-05-03 23:42:12">2026-05-03</time></span></div><div class="content">123456789f = open(&quot;D:/change_audit_task/auditchange.log&quot;,&quot;a&quot;)    try:        app = daily_aduitchange()        app.audit_change()    except Exception as e:        print(datetime.now(),file=f)        print(e,file=f)print(&quot; &quot;)f.close()  其中&quot;a&quot;表示追加，&quot;w&quot;为覆盖 </div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2026/05/03/database/%E6%85%A2%E6%9F%A5%E8%AF%A2%E5%88%86%E6%9E%90/" title="慢查询分析"><img class="post-bg" src="https://s3.bmp.ovh/imgs/2021/12/aa919861f9649bbc.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="慢查询分析"></a></div><div class="recent-post-info"><a class="article-title" href="/2026/05/03/database/%E6%85%A2%E6%9F%A5%E8%AF%A2%E5%88%86%E6%9E%90/" title="慢查询分析">慢查询分析</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-05-03T15:42:12.026Z" title="发表于 2026-05-03 23:42:12">2026-05-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/database/">database</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/mysql/">mysql</a></span></div><div class="content">mysql慢查询日志开启mysql 提供一种慢查询日志记录，用于记录响应时间超过阈值的SQL语句（默认是关闭的）。 1234567891011121314151617181920212223临时开启：mysql&gt; show variables  like &#x27;%slow_query_log%&#x27;;+---------------------+-----------------------------------------------+| Variable_name       | Value                                         |+---------------------+-----------------------------------------------+| slow_query_log      | OFF                                           || slow_query_log_file | /home/WDPM/MysqlData/mysql/DB...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2026/05/03/kubernetes/kubernetes%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="kubernetes常用命令"><img class="post-bg" src="https://s3.bmp.ovh/imgs/2021/11/e6fa8293ce439e2f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="kubernetes常用命令"></a></div><div class="recent-post-info"><a class="article-title" href="/2026/05/03/kubernetes/kubernetes%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="kubernetes常用命令">kubernetes常用命令</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-05-03T14:37:31.000Z" title="发表于 2026-05-03 22:37:31">2026-05-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/kubernetes/">kubernetes</a></span></div><div class="content">常用的kubernetes命令Pod相关kubectl get pod -n monitoringkubectl get pod -o wide -n monitoring (-o wide 打印更详细的信息)kubectl describe pod -n monitoring Service相关kubectl get svc -n monitoringkubectl describe svc -n monitoring </div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2026/05/03/linux/%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%9A%84%E9%BB%98%E8%AE%A4%E6%9D%83%E9%99%90%E5%92%8C%E9%9A%90%E8%97%8F%E6%9D%83%E9%99%90/" title="无标题"><img class="post-bg" src="https://s3.bmp.ovh/imgs/2021/11/870c1fb728332e57.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无标题"></a></div><div class="recent-post-info"><a class="article-title" href="/2026/05/03/linux/%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%9A%84%E9%BB%98%E8%AE%A4%E6%9D%83%E9%99%90%E5%92%8C%E9%9A%90%E8%97%8F%E6%9D%83%E9%99%90/" title="无标题">无标题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-05-03T14:31:42.333Z" title="发表于 2026-05-03 22:31:42">2026-05-03</time></span></div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2026/05/03/linux/grep/" title="文本三剑客之grep"><img class="post-bg" src="https://s3.bmp.ovh/imgs/2021/11/4f6cdbd86e0cc6cd.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="文本三剑客之grep"></a></div><div class="recent-post-info"><a class="article-title" href="/2026/05/03/linux/grep/" title="文本三剑客之grep">文本三剑客之grep</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-05-03T14:31:42.332Z" title="发表于 2026-05-03 22:31:42">2026-05-03</time></span></div><div class="content">用法： grep [-acinv] [--color=auto] &#39;匹配内容&#39; filename 常用选项： 123456789101112131415-E: 开启扩展正则表达式。-i: 忽略大小写。-v: 反选，只打印匹配不到的。-n: 显示行号。-w: 被匹配的文本只能是单词，而不是单词的某一部分，即精确匹配。-c: 显示总共有多少行被匹配到，同时使用-cv则显示有多少行没有被匹配到。-o: 只显示被模式匹配到的字符串。-l: 列出包含匹配内容的文件名称。-L: 列出不包含匹配内容的文件名称。-d: 指定查到的是目录而非文件。-R/-r: 递归查询，配合-l可以递归查询某目录下包含匹配内容的文件名称。--color: 将匹配到的内容高亮显示。-A n: 显示匹配到的字符串所在行及其后n行。-B n: 显示匹配到的字符串所在行及其前n行。-C n: 显示匹配到的字符串所在行及其前后各n行。  举例： 12# grep root /etc/passwd</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2026/05/03/linux/lvm%E6%8C%82%E8%BD%BD/" title="磁盘格式化为LVM挂载"><img class="post-bg" src="https://s3.bmp.ovh/imgs/2021/11/31f1756012d1878e.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="磁盘格式化为LVM挂载"></a></div><div class="recent-post-info"><a class="article-title" href="/2026/05/03/linux/lvm%E6%8C%82%E8%BD%BD/" title="磁盘格式化为LVM挂载">磁盘格式化为LVM挂载</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-05-03T14:31:42.332Z" title="发表于 2026-05-03 22:31:42">2026-05-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/linux/">linux</a></span></div><div class="content">磁盘格式化为LVM挂载查看新加硬盘12345678910111213141516171819202122232425262728293031323334[root@localhost ~]# fdisk -lDisk /dev/sda：30 GiB，32212254720 字节，62914560 个扇区单元：扇区 / 1 * 512 = 512 字节扇区大小(逻辑/物理)：512 字节 / 512 字节I/O 大小(最小/最佳)：512 字节 / 512 字节磁盘标签类型：dos磁盘标识符：0xef4acff5设备       启动    起点     末尾     扇区 大小 Id 类型/dev/sda1  *       2048  2099199  2097152   1G 83 Linux/dev/sda2       2099200 62914559 60815360  29G 8e Linux LVMDisk /dev/sdb：20 GiB，21474836480 字节，41943040 个扇区单元：扇区 / 1 * 512 = 512 字节扇区大小(逻辑/物理)：5...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2026/05/03/kubernetes/kubernetes%E5%9F%BA%E7%A1%80/" title="kubernetes基础"><img class="post-bg" src="https://s3.bmp.ovh/imgs/2021/11/e6fa8293ce439e2f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="kubernetes基础"></a></div><div class="recent-post-info"><a class="article-title" href="/2026/05/03/kubernetes/kubernetes%E5%9F%BA%E7%A1%80/" title="kubernetes基础">kubernetes基础</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-05-03T14:31:42.332Z" title="发表于 2026-05-03 22:31:42">2026-05-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/kubernetes/">kubernetes</a></span></div><div class="content">Kubernetes 系统基础Kubernetes介绍什么是Kubernetes？Kubernetes是容器集群管理系统，是一个开源的平台，可以实现容器集群的自动化部署、自动扩缩容、维护等功能。使用Kubernetes可以：  自动化容器的部署和复制 随时扩展或收缩容器规模 将容器组织成组，并且提供容器间的负载均衡 很容易地升级应用程序容器的新版本 节省资源，优化硬件资源的使用 提供容器弹性，如果容器失效就替换它，等等…  Kubernetes特点 便携性：支持公有云、私有云、混合云、多重云(multi-cloud) 可扩展：模块化、插件化、可组合、可挂载 自修复：自动部署，自动重启，自动复制，自动伸缩扩展  Kubernetes特性Kubernetes是一种用于在一组主机上运行和协同容器化应用程序的系统，旨在提供可预测性、可扩展性与高可用的性的方法来完全管理容器化应用程序和服务的生命周期的平台。它具有以下几个重要的特性：  自动装箱：构建于容器之上，基于资源依赖及其他约束自动完成容器部署且不影响其可用性，并通过调度机制混合关键型应用和非关键型应用的工作负载于同一节点以提升资源利...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2026/05/03/hello-world/" title="Hello World"><img class="post-bg" src="https://s3.bmp.ovh/imgs/2021/11/c60591c72c9f6533.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"></a></div><div class="recent-post-info"><a class="article-title" href="/2026/05/03/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-05-03T14:31:42.331Z" title="发表于 2026-05-03 22:31:42">2026-05-03</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;  More info: Writing Run server1$ hexo server  More info: Server Generate static files1$ hexo generate  More info: Generating Deploy to remote sites1$ hexo deploy  More info: Deployment </div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2026/05/03/docker/dockerfile%E8%AF%A6%E8%A7%A3/" title="dockerfile详解"><img class="post-bg" src="https://s3.bmp.ovh/imgs/2021/11/341c9aa0a7d508e3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="dockerfile详解"></a></div><div class="recent-post-info"><a class="article-title" href="/2026/05/03/docker/dockerfile%E8%AF%A6%E8%A7%A3/" title="dockerfile详解">dockerfile详解</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-05-03T14:31:42.331Z" title="发表于 2026-05-03 22:31:42">2026-05-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/docker/">docker</a></span></div><div class="content">dockerfile说明Dockfile是一种被Docker程序解释的脚本，它由一条条的指令组成，每条指令对应Linux下面的一条命令。Docker程序将这些Dockerfile指令翻译成真正的Linux命令。Dockerfile有自己书写格式和支持的命令，Docker程序解决这些命令间的依赖关系，类似于Makefile。Docker程序将读取Dockerfile，根据指令生成定制的image。相比image这种黑盒子，Dockerfile这种显而易见的脚本更容易被使用者接受，它明确的表明image是怎么产生的。有了Dockerfile，当我们需要定制自己额外的需求时，只需在Dockerfile上添加或者修改指令，重新生成image即可，省去了敲命令的麻烦。 总的来说： Dockerfile分为四部分：基础镜像信息、镜像创建者信息、镜像操作指令、容器启动执行指令。 一开始必须要指明所基于的镜像名称，接下来一般会说明镜像创建者信息，后面则是镜像操作指令。 一、Dockerfile的书写规则及指令使用方法Dockerfile的指令是忽略大小写的，建议使用大写，使用 # 作为注释，每一...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2026/05/03/database/%E7%BB%9F%E8%AE%A1%E5%B7%A5%E4%BD%9C%E6%97%A5%E6%95%B0%E6%8D%AE/" title="统计工作日数据"><img class="post-bg" src="https://s3.bmp.ovh/imgs/2021/11/8fdb0c7843241f4a.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="统计工作日数据"></a></div><div class="recent-post-info"><a class="article-title" href="/2026/05/03/database/%E7%BB%9F%E8%AE%A1%E5%B7%A5%E4%BD%9C%E6%97%A5%E6%95%B0%E6%8D%AE/" title="统计工作日数据">统计工作日数据</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-05-03T14:31:42.330Z" title="发表于 2026-05-03 22:31:42">2026-05-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/database/">database</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/mysql/">mysql</a></span></div><div class="content">weekday()函数mysql中weekday(date)可以返回对应日期的工作日索引，0便是周一，1表示周二，......,6表示周日。 12345678mysql&gt; SELECT WEEKDAY(&#x27;2017-12-15&#x27;);+-----------------------+| WEEKDAY(&#x27;2017-12-15&#x27;) |+-----------------------+|                     4 |+-----------------------+1 row in set (0.00 sec)也可以是&#x27;2017-12-15 13:00:00&#x27;的日期时间格式 123456select (case when weekday(date)&lt;5 then &#x27;yes&#x27;     when weekday(date)&gt;=5 then &#x27;no&#x27;     else end) as ifworkdayfrom tableyes就是周-到周五的，no就是周六到...</div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="page-number" href="/page/3/#content-inner">3</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Kymlin</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/kymlin"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/kymlin" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:kymlin00@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">好好吃饭🍣,好好睡觉💤</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/05/03/python/python%20print/" title="print输出到文件"><img src="https://s3.bmp.ovh/imgs/2021/12/c26b41ae47cabcc2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="print输出到文件"/></a><div class="content"><a class="title" href="/2026/05/03/python/python%20print/" title="print输出到文件">print输出到文件</a><time datetime="2026-05-03T15:42:12.030Z" title="发表于 2026-05-03 23:42:12">2026-05-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/05/03/database/%E6%85%A2%E6%9F%A5%E8%AF%A2%E5%88%86%E6%9E%90/" title="慢查询分析"><img src="https://s3.bmp.ovh/imgs/2021/12/aa919861f9649bbc.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="慢查询分析"/></a><div class="content"><a class="title" href="/2026/05/03/database/%E6%85%A2%E6%9F%A5%E8%AF%A2%E5%88%86%E6%9E%90/" title="慢查询分析">慢查询分析</a><time datetime="2026-05-03T15:42:12.026Z" title="发表于 2026-05-03 23:42:12">2026-05-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/05/03/kubernetes/kubernetes%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="kubernetes常用命令"><img src="https://s3.bmp.ovh/imgs/2021/11/e6fa8293ce439e2f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="kubernetes常用命令"/></a><div class="content"><a class="title" href="/2026/05/03/kubernetes/kubernetes%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="kubernetes常用命令">kubernetes常用命令</a><time datetime="2026-05-03T14:37:31.000Z" title="发表于 2026-05-03 22:37:31">2026-05-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/05/03/linux/%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%9A%84%E9%BB%98%E8%AE%A4%E6%9D%83%E9%99%90%E5%92%8C%E9%9A%90%E8%97%8F%E6%9D%83%E9%99%90/" title="无标题"><img src="https://s3.bmp.ovh/imgs/2021/11/870c1fb728332e57.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无标题"/></a><div class="content"><a class="title" href="/2026/05/03/linux/%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%9A%84%E9%BB%98%E8%AE%A4%E6%9D%83%E9%99%90%E5%92%8C%E9%9A%90%E8%97%8F%E6%9D%83%E9%99%90/" title="无标题">无标题</a><time datetime="2026-05-03T14:31:42.333Z" title="发表于 2026-05-03 22:31:42">2026-05-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/05/03/linux/grep/" title="文本三剑客之grep"><img src="https://s3.bmp.ovh/imgs/2021/11/4f6cdbd86e0cc6cd.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="文本三剑客之grep"/></a><div class="content"><a class="title" href="/2026/05/03/linux/grep/" title="文本三剑客之grep">文本三剑客之grep</a><time datetime="2026-05-03T14:31:42.332Z" title="发表于 2026-05-03 22:31:42">2026-05-03</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/database/"><span class="card-category-list-name">database</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/docker/"><span class="card-category-list-name">docker</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/elasticsearch/"><span class="card-category-list-name">elasticsearch</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/hexo/"><span class="card-category-list-name">hexo</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/kubernetes/"><span class="card-category-list-name">kubernetes</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/linux/"><span class="card-category-list-name">linux</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/problem/"><span class="card-category-list-name">problem</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/python/"><span class="card-category-list-name">python</span><span class="card-category-list-count">2</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/mysql/" style="font-size: 1.1em; color: #999">mysql</a> <a href="/tags/shell/" style="font-size: 1.5em; color: #99a9bf">shell</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/05/">
+            <span class="card-archive-list-date">
+              五月 2026
+            </span>
+            <span class="card-archive-list-count">10</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/11/">
+            <span class="card-archive-list-date">
+              十一月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2022/04/">
+            <span class="card-archive-list-date">
+              四月 2022
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2022/03/">
+            <span class="card-archive-list-date">
+              三月 2022
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2022/01/">
+            <span class="card-archive-list-date">
+              一月 2022
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2021/12/">
+            <span class="card-archive-list-date">
+              十二月 2021
+            </span>
+            <span class="card-archive-list-count">9</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2021/11/">
+            <span class="card-archive-list-date">
+              十一月 2021
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">25</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-05-03T15:45:29.490Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2020 - 2026 By Kymlin</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js@3.0.0/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  },
+  processSubtitle: (content, extraContents = []) => {
+    if (true) {
+      const sub = ["这短短的一生","我们最终都会失去","你不妨大胆一些","爱一个人","攀一座山","追一个梦","出自《大鱼海棠》","少年与爱永不老去","即便披荆斩棘，丢失鲜衣怒马"].slice()
+
+      if (extraContents.length > 0) {
+        sub.unshift(...extraContents)
+      }
+
+      if (typeof content === 'string') {
+        sub.unshift(content)
+      } else if (Array.isArray(content)) {
+        sub.unshift(...content)
+      }
+
+      sub.length > 0 && typedJSFn.init(sub)
+    } else {
+      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
+        (Array.isArray(content) && content.length > 0 ? content[0] : '')
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  typedJSFn.processSubtitle(["这短短的一生","我们最终都会失去","你不妨大胆一些","爱一个人","攀一座山","追一个梦","出自《大鱼海棠》","少年与爱永不老去","即便披荆斩棘，丢失鲜衣怒马"])
+}
+typedJSFn.run(subtitleType)</script></div><div class="aplayer no-destroy" data-id="547187496" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" data-volume="0.5" muted></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-heart.min.js" async="async" mobile="true"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => {
+      try {
+        fn()
+      } catch (err) {
+        console.debug('Pjax callback failed:', err)
+      }
+    })
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      false
+        ? pjax.loadUrl('/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>helm常用命令 | Kymlin's Blog</title><meta name="author" content="Kymlin,kymlin00@gmail.com"><meta name="copyright" content="Kymlin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="简介：Helm 是 Kubernetes 的包管理工具，使用 Chart 来打包、配置和发布应用。下面列出常见命令与示例，基于 Helm 3。 仓库管理： 123456helm version                                  # 查看 Helm 版本helm ..."><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "helm常用命令",
+  "url": "http://kymlin.github.io/2026/05/05/kubernetes/helm%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/",
+  "image": "https://s3.bmp.ovh/imgs/2021/11/e6fa8293ce439e2f.jpg",
+  "datePublished": "2026-05-05T13:50:22.000Z",
+  "dateModified": "2026-05-05T13:52:51.568Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Kymlin",
+      "url": "http://kymlin.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="http://kymlin.github.io/2026/05/05/kubernetes/helm%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'helm常用命令',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://movie.douban.com/top250"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://s3.bmp.ovh/imgs/2021/11/e6fa8293ce439e2f.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Kymlin's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">helm常用命令</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://movie.douban.com/top250"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">helm常用命令</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-05-05T13:50:22.000Z" title="发表于 2026-05-05 21:50:22">2026-05-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-05-05T13:52:51.568Z" title="更新于 2026-05-05 21:52:51">2026-05-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/kubernetes/">kubernetes</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>简介：<br>Helm 是 Kubernetes 的包管理工具，使用 Chart 来打包、配置和发布应用。下面列出常见命令与示例，基于 Helm 3。</p>
+<p>仓库管理：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">helm version                                  <span class="comment"># 查看 Helm 版本</span></span><br><span class="line">helm repo add NAME URL                        <span class="comment"># 添加 chart 仓库</span></span><br><span class="line">helm repo update                              <span class="comment"># 更新本地仓库索引</span></span><br><span class="line">helm repo list                                <span class="comment"># 列出已添加的仓库</span></span><br><span class="line">helm search repo KEYWORD                      <span class="comment"># 在已添加仓库中搜索 chart</span></span><br><span class="line">helm search hub KEYWORD                       <span class="comment"># 在 Helm Hub 搜索（需网络）</span></span><br></pre></td></tr></table></figure>
+
+<p>安装与升级：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">helm install RELEASE_NAME CHART               <span class="comment"># 安装 chart，RELEASE_NAME 可自定义</span></span><br><span class="line">helm install RELEASE_NAME CHART --namespace ns --create-namespace   <span class="comment"># 指定命名空间并创建</span></span><br><span class="line">helm upgrade RELEASE_NAME CHART               <span class="comment"># 升级已存在的 release</span></span><br><span class="line">helm upgrade --install RELEASE_NAME CHART     <span class="comment"># 若不存在则安装（常用）</span></span><br><span class="line">helm uninstall RELEASE_NAME --namespace ns    <span class="comment"># 卸载 release</span></span><br><span class="line"></span><br><span class="line">常用选项（安装/升级）：</span><br><span class="line">--values/-f values.yaml    <span class="comment"># 使用 values 文件</span></span><br><span class="line">--<span class="built_in">set</span> key=val              <span class="comment"># 覆盖单个值（可多次）</span></span><br><span class="line">--set-file key=path        <span class="comment"># 从文件读取值</span></span><br><span class="line">--set-string key=val       <span class="comment"># 强制字符串</span></span><br><span class="line">--namespace N              <span class="comment"># 指定命名空间</span></span><br><span class="line">--<span class="built_in">wait</span> --timeout 300s --atomic  <span class="comment"># 等待所有资源就绪，失败时回滚</span></span><br></pre></td></tr></table></figure>
+
+<p>发布管理与查看：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">helm list --all-namespaces                   <span class="comment"># 列出所有 release</span></span><br><span class="line">helm status RELEASE_NAME --namespace ns      <span class="comment"># 查看 release 状态</span></span><br><span class="line">helm <span class="built_in">history</span> RELEASE_NAME --namespace ns     <span class="comment"># 查看 release 历史（修订）</span></span><br><span class="line">helm rollback RELEASE_NAME REVISION          <span class="comment"># 回滚到指定修订</span></span><br><span class="line">helm uninstall RELEASE_NAME                  <span class="comment"># 卸载 release</span></span><br></pre></td></tr></table></figure>
+
+<p>获取详情与调试：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">helm get all RELEASE_NAME --namespace ns     <span class="comment"># 获取 release 的所有信息（manifest、hooks、values）</span></span><br><span class="line">helm get manifest RELEASE_NAME --namespace ns</span><br><span class="line">helm get values RELEASE_NAME --namespace ns  <span class="comment"># 查看当前生效的 values</span></span><br><span class="line">helm <span class="built_in">test</span> RELEASE_NAME --namespace ns        <span class="comment"># 运行 chart 的测试（若 chart 包含 test hook）</span></span><br><span class="line">helm template RELEASE_NAME CHART --values v.yaml   <span class="comment"># 渲染模板到本地，仅查看生成的 manifest（不安装）</span></span><br><span class="line">helm lint CHART_DIR                           <span class="comment"># 检查 chart 合规性</span></span><br></pre></td></tr></table></figure>
+
+<p>Chart 操作与打包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">helm show chart CHART         <span class="comment"># 显示 Chart.yaml 内容</span></span><br><span class="line">helm show values CHART        <span class="comment"># 显示 chart 的默认 values</span></span><br><span class="line">helm package PATH             <span class="comment"># 将 chart 目录打包为 .tgz</span></span><br><span class="line">helm repo index --merge index.yaml .  <span class="comment"># 生成/更新仓库索引（用于本地仓库）</span></span><br></pre></td></tr></table></figure>
+
+<p>依赖管理：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">helm dependency update CHART_DIR    <span class="comment"># 从 Chart.yaml 下载并更新 charts/ 目录</span></span><br><span class="line">helm dependency build CHART_DIR     <span class="comment"># 构建依赖（离线场景）</span></span><br></pre></td></tr></table></figure>
+
+<p>插件与环境：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">helm plugin list              <span class="comment"># 列出已安装插件</span></span><br><span class="line">helm env                      <span class="comment"># 显示 Helm 环境信息</span></span><br></pre></td></tr></table></figure>
+
+<p>小结示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加仓库并安装 nginx chart 到 my-nginx release</span></span><br><span class="line">helm repo add bitnami https://charts.bitnami.com/bitnami</span><br><span class="line">helm repo update</span><br><span class="line">helm install my-nginx bitnami/nginx --namespace web --create-namespace -f values.yaml</span><br><span class="line"></span><br><span class="line"><span class="comment"># 灰度升级（先渲染检查）</span></span><br><span class="line">helm template my-app ./charts/my-app -f values.prod.yaml</span><br><span class="line">helm upgrade --install my-app ./charts/my-app --namespace prod -f values.prod.yaml --atomic --<span class="built_in">wait</span> --timeout 5m</span><br></pre></td></tr></table></figure>
+
+<p>高级与实用技巧：</p>
+<ul>
+<li>使用 –kube-context CONTEXT 在多集群环境中切换上下文。</li>
+<li>使用 –atomic 和 –wait 在自动回滚与等待就绪之间取得平衡。</li>
+<li>使用 –timeout 控制等待超时。</li>
+<li>对复杂的多值覆盖，优先使用 values 文件并用 –set 做小幅覆盖。</li>
+<li>开发时常用 helm template + kubectl apply -f - 进行逐步调试。</li>
+<li>对大型团队可结合 CI/CD（如 GitHub Actions、GitLab CI）执行 helm upgrade –install。</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://kymlin.github.io">Kymlin</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://kymlin.github.io/2026/05/05/kubernetes/helm%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">http://kymlin.github.io/2026/05/05/kubernetes/helm%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://kymlin.github.io" target="_blank">Kymlin's Blog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://s3.bmp.ovh/imgs/2021/11/e6fa8293ce439e2f.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/05/05/linux/awk/" title="文本三剑客之awk"><img class="cover" src="https://s3.bmp.ovh/imgs/2021/11/31f1756012d1878e.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">文本三剑客之awk</div></div><div class="info-2"><div class="info-item-1">简介：awk 是面向文本处理的脚本语言，擅长按字段处理表格型文本（默认以空白分隔）。适用于日志分析、列计算、报表生成与简单的字符串处理。 GNU awk（gawk）还支持扩展特性与函数库。 基本语法： 12awk &#x27;pattern &#123; action &#125;&#x27; file1 file2 ...# 或者带 -F 指定分隔符：awk -F, &#x27;&#123;print $1&#125;&#x27; file.csv 模式（pattern）可以是正则表达式、条件表达式或 BEGIN/END 块。动作为一段用大括号括起来的语句序列。 常用内置变量：  FS    : 输入字段分隔符（默认空白，可设为正则或字符） OFS   : 输出字段分隔符（默认空格） RS    : 输入记录分隔符（默认换行） ORS   : 输出记录分隔符（默认换行） NF    : 当前记录的字段个数 NR    : 已读的记录数（跨文件累计） FNR   : 当前文件的记录数（每个文件从1开始） FILENAME: 当前处理的文件名  常用选项：  -F sep     ...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Kymlin</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/kymlin"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/kymlin" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:kymlin00@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">好好吃饭🍣,好好睡觉💤</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/05/05/kubernetes/helm%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="helm常用命令"><img src="https://s3.bmp.ovh/imgs/2021/11/e6fa8293ce439e2f.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="helm常用命令"/></a><div class="content"><a class="title" href="/2026/05/05/kubernetes/helm%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="helm常用命令">helm常用命令</a><time datetime="2026-05-05T13:50:22.000Z" title="发表于 2026-05-05 21:50:22">2026-05-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/05/05/linux/awk/" title="文本三剑客之awk"><img src="https://s3.bmp.ovh/imgs/2021/11/31f1756012d1878e.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="文本三剑客之awk"/></a><div class="content"><a class="title" href="/2026/05/05/linux/awk/" title="文本三剑客之awk">文本三剑客之awk</a><time datetime="2026-05-05T13:21:44.000Z" title="发表于 2026-05-05 21:21:44">2026-05-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/05/05/linux/sed/" title="文本三剑客之sed"><img src="https://s3.bmp.ovh/imgs/2021/11/31f1756012d1878e.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="文本三剑客之sed"/></a><div class="content"><a class="title" href="/2026/05/05/linux/sed/" title="文本三剑客之sed">文本三剑客之sed</a><time datetime="2026-05-05T13:20:20.000Z" title="发表于 2026-05-05 21:20:20">2026-05-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/05/04/linux/grep/" title="文本三剑客之grep"><img src="https://s3.bmp.ovh/imgs/2021/11/31f1756012d1878e.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="文本三剑客之grep"/></a><div class="content"><a class="title" href="/2026/05/04/linux/grep/" title="文本三剑客之grep">文本三剑客之grep</a><time datetime="2026-05-03T16:00:00.000Z" title="发表于 2026-05-04 00:00:00">2026-05-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/05/03/python/python%20print/" title="print输出到文件"><img src="https://s3.bmp.ovh/imgs/2021/12/c26b41ae47cabcc2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="print输出到文件"/></a><div class="content"><a class="title" href="/2026/05/03/python/python%20print/" title="print输出到文件">print输出到文件</a><time datetime="2026-05-03T15:42:12.030Z" title="发表于 2026-05-03 23:42:12">2026-05-03</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2020 - 2026 By Kymlin</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const initValine = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyValine = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const valineConfig = {
+      el: '#vcomment',
+      appId: 'Yk3TFIIrGgysfeo9BUQVrjYA-gzGzoHsz',
+      appKey: 'DYXvwtnP2cR7MnkzUNiUSrQf',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      visitor: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || window.location.pathname
+    }
+
+    new Valine(valineConfig)
+  }
+
+  const loadValine = async (el, path) => {
+    if (typeof Valine === 'function') {
+      initValine(el, path)
+    } else {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/valine@1.5.3/dist/Valine.min.js')
+      initValine(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Valine' === 'Valine'
+      ? window.shuoshuoComment = { loadComment: loadValine }
+      : window.loadOtherComment = loadValine
+    return
+  }
+
+  if ('Valine' === 'Valine' || !true) {
+    if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><div class="aplayer no-destroy" data-id="547187496" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" data-volume="0.5" muted></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-heart.min.js" async="async" mobile="true"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => {
+      try {
+        fn()
+      } catch (err) {
+        console.debug('Pjax callback failed:', err)
+      }
+    })
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      false
+        ? pjax.loadUrl('/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
